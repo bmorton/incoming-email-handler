@@ -5,7 +5,8 @@ POSTed to a given endpoint with a predefined security token.
 
 ## How to use
 
-Edit the DOMAIN environment variable in this Dockerfile and build the image.
+Edit the DOMAIN, SHARED_SECRET, and POST_ENDPOINT environment variables in this
+Dockerfile and build the image.
 
 ## Running the container
 

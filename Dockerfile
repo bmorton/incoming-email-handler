@@ -6,8 +6,6 @@ RUN update-locale LANG=en_US.UTF-8
 
 # Use -h mail.example.com to set the hostname for this mail server
 ENV DOMAIN hippunk.com
-ENV SHARED_SECRET 1234123412341234
-ENV POST_ENDPOINT http://requestb.in/qnu88zqn
 
 # Install Postfix.
 RUN echo "postfix postfix/main_mailer_type string Internet site" > preseed.txt
@@ -34,6 +32,8 @@ RUN chown root:root /etc/virtual
 RUN postmap /etc/virtual
 
 # Update aliases
+ENV SHARED_SECRET 1234123412341234
+ENV POST_ENDPOINT http://requestb.in/qnu88zqn
 RUN echo "http_post: \"|/usr/local/bin/http_post -s $SHARED_SECRET $POST_ENDPOINT\"" > /etc/aliases
 RUN chown root:root /etc/aliases
 RUN newaliases
