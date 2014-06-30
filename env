@@ -1,0 +1,11 @@
+#!/bin/bash
+
+postconf -e myhostname=$DOMAIN
+postconf -e mydestination="mail.$DOMAIN, $DOMAIN, localhost.localdomain, localhost"
+echo "@$DOMAIN http_post" > /etc/virtual
+postmap /etc/virtual
+
+echo "$SECRET" > /.secret
+echo "$ENDPOINT" > /.endpoint
+
+exec "$@"

